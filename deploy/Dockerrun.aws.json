@@ -25,7 +25,7 @@
       "name": "nginx",
       "image": "nginx:stable",
       "essential": true,
-      "memory": 128,
+      "memory": 64,
       "portMappings": [
         {
           "hostPort": 80,
@@ -62,7 +62,7 @@
         }
       ],
       "essential": true,
-      "memory": 768,
+      "memory": 256,
       "portMappings": [
         {
           "hostPort": 9000,
