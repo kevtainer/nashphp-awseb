@@ -4,13 +4,19 @@
     {
       "name": "app",
       "host": {
-        "sourcePath": "/var/app/current/app"
+        "sourcePath": "/var/app/current/nashphp"
       }
     },
     {
       "name": "nginx-conf",
       "host": {
         "sourcePath": "/var/app/current/conf/nginx/default.conf"
+      }
+    },
+    {
+      "name": "php-fpm-conf",
+      "host": {
+        "sourcePath": "/var/app/current/conf/php/nashphp.conf"
       }
     }
   ],
@@ -37,7 +43,8 @@
         },
         {
           "sourceVolume": "nginx-conf",
-          "containerPath": "/etc/nginx/conf.d/default.conf"
+          "containerPath": "/etc/nginx/conf.d/default.conf",
+          "readOnly": true
         },
         {
           "sourceVolume": "awseb-logs-nginx",
@@ -56,10 +63,20 @@
       ],
       "essential": true,
       "memory": 768,
+      "portMappings": [
+        {
+          "hostPort": 9000,
+          "containerPort": 9000
+        }
+      ],
       "mountPoints": [
         {
           "sourceVolume": "app",
-          "containerPath": "/var/www/app",
+          "containerPath": "/var/www/app"
+        },
+        {
+          "sourceVolume": "php-fpm-conf",
+          "containerPath": "/usr/local/etc/php-fpm.d/zz-nashphp.conf",
           "readOnly": true
         }
       ]

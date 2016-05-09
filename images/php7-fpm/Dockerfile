@@ -16,4 +16,7 @@ RUN apt-get update && apt-get install -y libmcrypt-dev
 # Install modules
 RUN docker-php-ext-install mcrypt mbstring pdo pdo_mysql mysqli
 
+# Clever girl
+RUN usermod -u 1000 www-data
+
 CMD ["php-fpm"]
