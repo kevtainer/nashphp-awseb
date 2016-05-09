@@ -11,6 +11,8 @@ RUN curl -SL "https://xdebug.org/files/xdebug-2.4.0.tgz" -o xdebug.tar.xz \
 	&& make -j"$(nproc)" \
 	&& cp modules/xdebug.so "$(php -r 'echo ini_get("extension_dir");')"
 
+RUN apt-get update && apt-get install -y libmcrypt-dev
+
 # Install modules
 RUN docker-php-ext-install mcrypt mbstring pdo pdo_mysql mysqli
 
