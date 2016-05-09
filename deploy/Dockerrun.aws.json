@@ -1,0 +1,68 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "app",
+      "host": {
+        "sourcePath": "/var/app/current/app"
+      }
+    },
+    {
+      "name": "nginx-conf",
+      "host": {
+        "sourcePath": "/var/app/current/conf/nginx/default.conf"
+      }
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "nginx",
+      "image": "nginx:stable",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "php"
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "app",
+          "containerPath": "/var/www/app",
+          "readOnly": true
+        },
+        {
+          "sourceVolume": "nginx-conf",
+          "containerPath": "/etc/nginx/conf.d/default.conf"
+        },
+        {
+          "sourceVolume": "awseb-logs-nginx",
+          "containerPath": "/var/log/nginx"
+        }
+      ]
+    },
+    {
+      "name": "php",
+      "image": "kcmastrpc/nashphp-php",
+      "environment": [
+        {
+          "name": "MYSQL_HOST",
+          "value": "$MYSQL_HOST"
+        }
+      ],
+      "essential": true,
+      "memory": 768,
+      "mountPoints": [
+        {
+          "sourceVolume": "app",
+          "containerPath": "/var/www/app",
+          "readOnly": true
+        }
+      ]
+    }
+  ]
+}
