@@ -16,7 +16,7 @@
     {
       "name": "php-fpm-conf",
       "host": {
-        "sourcePath": "/var/app/current/conf/php/nashphp.conf"
+        "sourcePath": "/var/app/current/conf/php"
       }
     }
   ],
@@ -76,8 +76,7 @@
         },
         {
           "sourceVolume": "php-fpm-conf",
-          "containerPath": "/usr/local/etc/php-fpm.d/zz-nashphp.conf",
-          "readOnly": true
+          "containerPath": "/usr/local/etc/php-fpm.d"
         }
       ]
     }
