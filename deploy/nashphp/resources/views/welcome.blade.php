@@ -30,6 +30,12 @@
                 display: inline-block;
             }
 
+            .env {
+                margin-top: 30px;
+                padding: 2% 10%;
+                text-align: left;
+                background: #aeaeae;
+            }
             .title {
                 font-size: 96px;
             }
@@ -42,12 +48,15 @@
             </div>
             <br />
             Hello Nashville PHP User Group!<br />
-            <?php
 
-            echo sprintf("APP_ENV: %s<br />", getenv('APP_ENV'));
-            echo sprintf("APP_DEBUG: %s<br />", getenv('APP_DEBUG'));
-            echo sprintf("APP_URL: %s<br />", getenv('APP_URL'));
-            ?>
+            <div class="env">
+                <?php
+                echo sprintf("<b>APP_KEY:</b> %s<br />", getenv('APP_KEY'));
+                echo sprintf("<b>APP_ENV:</b> %s<br />", getenv('APP_ENV'));
+                echo sprintf("<b>APP_DEBUG:</b> %s<br />", getenv('APP_DEBUG'));
+                echo sprintf("<b>APP_URL:</b> %s<br />", getenv('APP_URL')); ?>
+            </div>
         </div>
+
     </body>
 </html>
