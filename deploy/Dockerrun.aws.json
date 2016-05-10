@@ -57,8 +57,16 @@
       "image": "kcmastrpc/nashphp-php",
       "environment": [
         {
-          "name": "MYSQL_HOST",
-          "value": "$MYSQL_HOST"
+          "name": "APP_ENV",
+          "value": "production"
+        },
+        {
+          "name": "APP_DEBUG",
+          "value": "false"
+        },
+        {
+          "name": "APP_URL",
+          "value": "http://nashphp.hotchicken.org"
         }
       ],
       "essential": true,

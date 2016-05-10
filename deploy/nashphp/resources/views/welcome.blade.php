@@ -40,6 +40,14 @@
             <div class="content">
                 <div class="title">Laravel 5</div>
             </div>
+            <br />
+            Hello Nashville PHP User Group!<br />
+            <?php
+
+            echo sprintf("APP_ENV: %s<br />", getenv('APP_ENV'));
+            echo sprintf("APP_DEBUG: %s<br />", getenv('APP_DEBUG'));
+            echo sprintf("APP_URL: %s<br />", getenv('APP_URL'));
+            ?>
         </div>
     </body>
 </html>
